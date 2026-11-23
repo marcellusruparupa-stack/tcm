@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sehat dengan TCM — Akupunktur & Pengobatan Tradisional Tionghoa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#F7F2E7;
+    --ivory-deep:#EFE6D3;
+    --paper:#FCF9F1;
+    --ink:#1F1B16;
+    --ink-soft:#4A423A;
+    --ink-mute:#6E655A;
+    --brick:#A33A2B;
+    --brick-deep:#8A2E21;
+    --gold:#B08D57;
+    --jade:#4F6B5A;
+    --line:#D9CDB6;
+    --shadow:0 1px 2px rgba(31,27,22,.05), 0 8px 24px -12px rgba(31,27,22,.18);
+    --ease:cubic-bezier(.22,.68,.35,1);
+  }
+
+  html{font-size:20px; -webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 12% 8%, rgba(176,141,87,.09), transparent 45%),
+      radial-gradient(circle at 88% 82%, rgba(163,58,43,.07), transparent 42%),
+      var(--ivory);
+    color:var(--ink);
+    font-family:"Inter",system-ui,-apple-system,sans-serif;
+    font-size:1rem;
+    line-height:1.85;
+    letter-spacing:.002em;
+  }
+  /* subtle rice-paper texture */
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.5;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(31,27,22,.014) 0 1px, transparent 1px 3px),
+      repeating-linear-gradient(90deg, rgba(31,27,22,.012) 0 1px, transparent 1px 4px);
+  }
+  .wrap{position:relative; z-index:1; max-width:60rem; margin:0 auto; padding:0 1.25rem 6rem;}
+
+  /* ---------- text size control ---------- */
+  .textbar{
+    position:sticky; top:0; z-index:50;
+    display:flex; justify-content:flex-end; align-items:center; gap:.4rem;
+    padding:.55rem 1.25rem;
+    background:rgba(247,242,231,.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .textbar span{font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-mute); font-weight:600;}
+  .textbar button{
+    font-family:inherit; font-size:.78rem; font-weight:600; cursor:pointer;
+    min-width:3.1rem; min-height:2.2rem;
+    border:1px solid var(--line); background:var(--paper); color:var(--ink-soft);
+    border-radius:.35rem;
+    transition:background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+  }
+  .textbar button:hover{border-color:var(--brick); color:var(--brick);}
+  .textbar button[aria-pressed="true"]{background:var(--brick); border-color:var(--brick); color:#fff;}
+
+  /* ---------- hero ---------- */
+  header.hero{padding:3.5rem 0 2.5rem; text-align:center; position:relative;}
+  header.hero::after{
+    content:"健"; position:absolute; top:-.5rem; left:50%; transform:translateX(-50%);
+    font-family:"Noto Serif SC",serif; font-size:11rem; line-height:1;
+    color:rgba(176,141,87,.10); pointer-events:none; z-index:-1;
+  }
+  .eyebrow{
+    display:inline-block; font-size:.68rem; font-weight:600; letter-spacing:.28em;
+    text-transform:uppercase; color:var(--brick); margin-bottom:1rem;
+  }
+  h1{
+    font-family:"Cormorant Garamond",serif; font-weight:600;
+    font-size:2.6rem; line-height:1.15; margin:0 0 .9rem; letter-spacing:-.01em;
+  }
+  .lede{font-size:1rem; color:var(--ink-soft); max-width:34rem; margin:0 auto;}
+  .seal{
+    display:inline-flex; align-items:center; gap:.6rem; margin-top:1.6rem;
+    font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--ink-mute); font-weight:600;
+  }
+  .seal i{display:inline-block; width:2.2rem; height:1px; background:var(--gold);}
+
+  /* ---------- cards ---------- */
+  section{margin-top:3.5rem;}
+  .sec-head{display:flex; align-items:baseline; gap:1rem; margin-bottom:1.5rem;}
+  .sec-head h2{
+    font-family:"Cormorant Garamond",serif; font-weight:600;
+    font-size:1.75rem; margin:0; letter-spacing:-.005em;
+  }
+  .sec-head .rule{flex:1; height:1px; background:linear-gradient(to right,var(--line),transparent);}
+  .sec-head .num{
+    font-family:"Noto Serif SC",serif; font-size:.8rem; color:var(--gold);
+    letter-spacing:.1em; font-weight:600;
+  }
+
+  .pillars{display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); gap:1rem;}
+  .card{
+    background:var(--paper); border:1px solid var(--line); border-radius:.4rem;
+    padding:1.6rem 1.4rem; box-shadow:var(--shadow);
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+  }
+  .card:hover{transform:translateY(-3px); box-shadow:0 2px 4px rgba(31,27,22,.05),0 16px 34px -16px rgba(31,27,22,.26); border-color:#CDBFA3;}
+  .card .glyph{
+    font-family:"Noto Serif SC",serif; font-size:1.5rem; color:var(--brick);
+    display:block; margin-bottom:.5rem; letter-spacing:.05em;
+  }
+  .card h3{font-family:"Cormorant Garamond",serif; font-size:1.2rem; margin:0 0 .45rem; font-weight:600;}
+  .card p{margin:0; font-size:.86rem; line-height:1.75; color:var(--ink-soft);}
+
+  /* ---------- accordion ---------- */
+  .groupswitch{display:flex; gap:.5rem; margin-bottom:1.4rem; flex-wrap:wrap;}
+  .groupswitch button{
+    font-family:inherit; font-size:.82rem; font-weight:600; cursor:pointer;
+    padding:0 1.2rem; min-height:2.8rem;
+    background:transparent; color:var(--ink-soft);
+    border:1px solid var(--line); border-radius:999px;
+    transition:all .25s var(--ease);
+  }
+  .groupswitch button:hover{border-color:var(--brick); color:var(--brick);}
+  .groupswitch button[aria-selected="true"]{background:var(--ink); border-color:var(--ink); color:var(--ivory);}
+
+  .acc-item{
+    border-bottom:1px solid var(--line);
+    transition:background .3s var(--ease);
+  }
+  .acc-item:first-of-type{border-top:1px solid var(--line);}
+  .acc-btn{
+    width:100%; text-align:left; cursor:pointer; font-family:inherit;
+    background:none; border:0; padding:1.15rem .25rem;
+    display:flex; align-items:center; gap:1rem;
+    min-height:3.5rem;
+    transition:background .25s var(--ease), padding-left .25s var(--ease);
+  }
+  .acc-btn:hover{background:rgba(176,141,87,.06); padding-left:.6rem;}
+  .acc-btn:focus-visible{outline:2px solid var(--brick); outline-offset:-2px;}
+  .acc-age{
+    flex:0 0 auto; min-width:4.2rem;
+    font-family:"Noto Serif SC",serif; font-size:.78rem; font-weight:600;
+    color:var(--brick); letter-spacing:.04em;
+  }
+  .acc-title{
+    flex:1; font-family:"Cormorant Garamond",serif; font-size:1.12rem;
+    font-weight:600; color:var(--ink);
+  }
+  .acc-icon{
+    flex:0 0 auto; width:1.5rem; height:1.5rem; position:relative;
+  }
+  .acc-icon::before,.acc-icon::after{
+    content:""; position:absolute; background:var(--ink-mute); border-radius:1px;
+    transition:transform .38s var(--ease), opacity .3s var(--ease), background .3s var(--ease);
+  }
+  .acc-icon::before{left:50%; top:.3rem; width:1.5px; height:.9rem; transform:translateX(-50%);}
+  .acc-icon::after{top:50%; left:.3rem; width:.9rem; height:1.5px; transform:translateY(-50%);}
+  .acc-item.open .acc-icon::before{transform:translateX(-50%) rotate(90deg); opacity:0;}
+  .acc-item.open .acc-icon::after{background:var(--brick);}
+  .acc-item.open .acc-btn .acc-title{color:var(--brick);}
+
+  /* smooth height animation */
+  .acc-panel{
+    overflow:hidden;
+    height:0;
+    opacity:0;
+    transition:height .42s var(--ease), opacity .32s var(--ease);
+    will-change:height;
+  }
+  .acc-item.open .acc-panel{opacity:1;}
+  .acc-inner{
+    padding:0 .25rem 1.5rem 5.2rem;
+    font-size:.88rem; line-height:1.8; color:var(--ink-soft);
+    transform:translateY(-6px);
+    transition:transform .42s var(--ease);
+  }
+  .acc-item.open .acc-inner{transform:translateY(0);}
+  .acc-inner p{margin:0 0 .8rem;}
+  .acc-inner p:last-child{margin-bottom:0;}
+  .acc-inner ul{margin:.5rem 0 .8rem; padding-left:1.1rem;}
+  .acc-inner li{margin-bottom:.35rem;}
+  .acc-inner strong{color:var(--ink); font-weight:600;}
+  .tag{
+    display:inline-block; font-size:.66rem; font-weight:600; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--jade);
+    border:1px solid rgba(79,107,90,.3); background:rgba(79,107,90,.06);
+    padding:.15rem .5rem; border-radius:.2rem; margin-bottom:.6rem;
+  }
+
+  /* ---------- comparison table ---------- */
+  .tablewrap{overflow-x:auto; border:1px solid var(--line); border-radius:.4rem; background:var(--paper);}
+  table{border-collapse:collapse; width:100%; font-size:.84rem; min-width:32rem;}
+  thead th{
+    background:var(--ivory-deep); text-align:left; padding:.85rem 1rem;
+    font-weight:600; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ink-soft); border-bottom:1px solid var(--line);
+  }
+  tbody td{padding:.85rem 1rem; border-bottom:1px solid rgba(217,205,182,.6); color:var(--ink-soft);}
+  tbody tr:last-child td{border-bottom:0;}
+  tbody tr{transition:background .2s var(--ease);}
+  tbody tr:hover{background:rgba(176,141,87,.05);}
+  tbody td:first-child{font-weight:600; color:var(--ink);}
+
+  /* ---------- food ---------- */
+  .foodgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(13rem,1fr)); gap:1rem;}
+  .foodcard{
+    background:linear-gradient(160deg,var(--paper),var(--ivory-deep));
+    border:1px solid var(--line); border-radius:.4rem; padding:1.3rem 1.2rem;
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .foodcard:hover{transform:translateY(-2px); box-shadow:var(--shadow);}
+  .foodcard h4{
+    font-family:"Cormorant Garamond",serif; font-size:1.05rem; margin:0 0 .2rem;
+    font-weight:600; color:var(--ink);
+  }
+  .foodcard .organ{
+    font-size:.66rem; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--gold); font-weight:600; margin-bottom:.6rem; display:block;
+  }
+  .foodcard p{margin:0; font-size:.82rem; line-height:1.7; color:var(--ink-soft);}
+
+  /* ---------- quiz ---------- */
+  .quizbox{
+    background:var(--paper); border:1px solid var(--line); border-radius:.5rem;
+    padding:2rem 1.8rem; box-shadow:var(--shadow);
+  }
+  .quizbadge{
+    display:inline-flex; align-items:center; gap:.45rem;
+    font-size:.66rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--jade); background:rgba(79,107,90,.09);
+    border:1px solid rgba(79,107,90,.24);
+    padding:.28rem .7rem; border-radius:999px; margin-bottom:1rem;
+  }
+  .quizbadge i{width:.4rem; height:.4rem; border-radius:50%; background:var(--jade); display:inline-block;}
+  .quizbox h3{font-family:"Cormorant Garamond",serif; font-size:1.4rem; margin:0 0 .4rem; font-weight:600;}
+  .quiz-intro{font-size:.86rem; color:var(--ink-soft); margin:0 0 1.6rem; max-width:38rem;}
+
+  .q{margin-bottom:1.5rem;}
+  .q-label{
+    display:flex; gap:.6rem; font-size:.88rem; font-weight:600; color:var(--ink);
+    margin-bottom:.7rem; line-height:1.6;
+  }
+  .q-label span{flex:0 0 1.4rem; color:var(--brick); font-family:"Noto Serif SC",serif;}
+  .options{display:grid; gap:.5rem;}
+  .opt{
+    display:flex; align-items:flex-start; gap:.7rem; cursor:pointer;
+    font-size:.84rem; line-height:1.6; color:var(--ink-soft);
+    padding:.7rem .95rem; min-height:2.9rem;
+    border:1px solid var(--line); border-radius:.35rem; background:var(--ivory);
+    transition:border-color .22s var(--ease), background .22s var(--ease), color .22s var(--ease), transform .18s var(--ease);
+    position:relative;
+  }
+  .opt:hover{border-color:var(--gold); transform:translateX(2px);}
+  .opt input{position:absolute; opacity:0; pointer-events:none;}
+  .dot{
+    flex:0 0 auto; width:1.05rem; height:1.05rem; border-radius:50%;
+    border:1.5px solid #BFB29A; margin-top:.22rem;
+    display:flex; align-items:center; justify-content:center;
+    transition:border-color .22s var(--ease), background .22s var(--ease);
+  }
+  .dot::after{
+    content:""; width:.5rem; height:.5rem; border-radius:50%; background:#fff;
+    transform:scale(0); transition:transform .24s var(--ease);
+  }
+  .opt input:checked ~ .dot{border-color:var(--brick); background:var(--brick);}
+  .opt input:checked ~ .dot::after{transform:scale(1);}
+  .opt:has(input:checked){border-color:var(--brick); background:rgba(163,58,43,.055); color:var(--ink);}
+  .opt input:focus-visible ~ .dot{outline:2px solid var(--brick); outline-offset:2px;}
+
+  .quiz-actions{display:flex; gap:.7rem; flex-wrap:wrap; margin-top:1.8rem;}
+  .btn{
+    font-family:inherit; font-size:.86rem; font-weight:600; cursor:pointer;
+    min-height:3.5rem; padding:0 1.7rem; border-radius:.35rem;
+    border:1px solid transparent;
+    display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+    transition:background .22s var(--ease), color .22s var(--ease), border-color .22s var(--ease), transform .15s var(--ease), opacity .22s var(--ease);
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{background:var(--brick); color:#fff; border-color:var(--brick);}
+  .btn-primary:hover{background:var(--brick-deep); border-color:var(--brick-deep);}
+  .btn-primary:disabled{opacity:.42; cursor:not-allowed; transform:none;}
+  .btn-ghost{background:transparent; color:var(--ink-soft); border-color:var(--line);}
+  .btn-ghost:hover{border-color:var(--ink-soft); color:var(--ink);}
+  .progressline{
+    height:3px; background:rgba(217,205,182,.6); border-radius:2px; margin-bottom:1.8rem; overflow:hidden;
+  }
+  .progressline i{
+    display:block; height:100%; width:0; background:var(--brick);
+    transition:width .5s var(--ease);
+  }
+
+  .result{
+    border-top:1px solid var(--line); margin-top:1.8rem; padding-top:1.6rem;
+    animation:rise .5s var(--ease) both;
+  }
+  @keyframes rise{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);}}
+  .result .pattern{
+    font-size:.68rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--brick); font-weight:700; margin-bottom:.4rem;
+  }
+  .result h4{font-family:"Cormorant Garamond",serif; font-size:1.35rem; margin:0 0 .7rem; font-weight:600;}
+  .result p{font-size:.86rem; color:var(--ink-soft); margin:0 0 .8rem;}
+  .result ul{margin:.4rem 0 1rem; padding-left:1.1rem; font-size:.85rem; color:var(--ink-soft);}
+  .result li{margin-bottom:.4rem;}
+  .result .reco{
+    background:rgba(79,107,90,.07); border-left:2px solid var(--jade);
+    padding:.9rem 1.1rem; font-size:.84rem; color:var(--ink-soft); border-radius:0 .3rem .3rem 0;
+  }
+
+  .softnote{
+    font-size:.76rem; color:var(--ink-mute); line-height:1.7;
+    border-top:1px dashed var(--line); margin-top:1.2rem; padding-top:.9rem;
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    margin-top:4rem; padding-top:1.8rem; border-top:1px solid var(--line);
+    font-size:.76rem; color:var(--ink-mute); line-height:1.75;
+  }
+  footer strong{color:var(--ink-soft); font-weight:600;}
+
+  @media (max-width:640px){
+    html{font-size:18px;}
+    h1{font-size:2rem;}
+    .acc-inner{padding-left:1rem;}
+    .quizbox{padding:1.4rem 1.1rem;}
+    .sec-head h2{font-size:1.4rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important; animation:none!important;}
+    .acc-panel{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="textbar" role="group" aria-label="Ukuran teks">
+  <span>Ukuran teks</span>
+  <button type="button" data-size="base" aria-pressed="true">A</button>
+  <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  <button type="button" data-size="xl" aria-pressed="false">A++</button>
+</div>
+
+<div class="wrap">
+
+  <header class="hero">
+    <span class="eyebrow">Pengobatan Tradisional Tionghoa</span>
+    <h1>Sehat dengan TCM</h1>
+    <p class="lede">Memahami tubuh lewat tiga pilar klasik — <strong>Shen</strong>, <strong>Jing</strong>, dan <strong>Tiangui</strong> — dan merawatnya sesuai fase usia.</p>
+    <div class="seal"><i></i> Akupunktur · Herbal · Pola Hidup <i></i></div>
+  </header>
+
+  <!-- 3 PILAR -->
+  <section>
+    <div class="sec-head">
+      <span class="num">一</span>
+      <h2>Tiga Pilar Klasik</h2>
+      <span class="rule"></span>
+    </div>
+    <div class="pillars">
+      <article class="card">
+        <span class="glyph">神 Shen</span>
+        <h3>Jiwa &amp; Kesadaran</h3>
+        <p>Pusat kesadaran, pikiran, dan emosi. Shen yang tenang terlihat dari mata terang, tidur nyenyak, dan suasana hati stabil. Shen terganggu → gelisah, sulit fokus, mudah cemas.</p>
+      </article>
+      <article class="card">
+        <span class="glyph">精 Jing</span>
+        <h3>Esensi &amp; Cadangan</h3>
+        <p>Cadangan energi bawaan dari lahir, disimpan di Ginjal. Jing menentukan pertumbuhan, kesuburan, dan proses penuaan. Habisnya Jing = tanda penuaan dini.</p>
+      </article>
+      <article class="card">
+        <span class="glyph">天癸 Tiangui</span>
+        <h3>Pemicu Kematangan</h3>
+        <p>Zat yang memicu kematangan reproduksi. Pada wanita muncul puncaknya di usia 14, pria di 16. Setelahnya kadarnya menurun bertahap mengikuti siklus usia.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- SIKLUS USIA -->
+  <section>
+    <div class="sec-head">
+      <span class="num">二</span>
+      <h2>Siklus Usia: 7 Tahun Wanita, 8 Tahun Pria</h2>
+      <span class="rule"></span>
+    </div>
+    <p style="font-size:.86rem;color:var(--ink-soft);margin:0 0 1.2rem;max-width:42rem;">Klik tiap fase untuk melihat apa yang terjadi di tubuh dan cara merawatnya. Tidak perlu urut — buka yang paling relevan dengan usia Bro.</p>
+
+    <div class="groupswitch" role="tablist" aria-label="Kelompok siklus">
+      <button type="button" role="tab" aria-selected="true" data-group="wanita">Siklus Wanita (7)</button>
+      <button type="button" role="tab" aria-selected="false" data-group="pria">Siklus Pria (8)</button>
+    </div>
+
+    <div id="acc-wanita"></div>
+    <div id="acc-pria" hidden></div>
+  </section>
+
+  <!-- PERBANDINGAN -->
+  <section>
+    <div class="sec-head">
+      <span class="num">三</span>
+      <h2>Tonggak Pria &amp; Wanita</h2>
+      <span class="rule"></span>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>Tonggak</th><th>Wanita</th><th>Pria</th><th>Makna</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Kematangan</td><td>14 tahun</td><td>16 tahun</td><td>Tiangui aktif, kesuburan mulai</td></tr>
+          <tr><td>Puncak</td><td>28 tahun</td><td>32 tahun</td><td>Jing &amp; otot paling kuat</td></tr>
+          <tr><td>Penurunan awal</td><td>35 tahun</td><td>40 tahun</td><td>Gigi &amp; rambut mulai melemah</td></tr>
+          <tr><td>Perubahan besar</td><td>49 tahun (menopause)</td><td>56 tahun</td><td>Tiangui habis, fase baru</td></tr>
+          <tr><td>Masa perawatan</td><td>35 – 49 tahun</td><td>40 – 64 tahun</td><td>Fokus menjaga Jing Ginjal</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 3 FASE PERAWATAN -->
+  <section>
+    <div class="sec-head">
+      <span class="num">四</span>
+      <h2>Tiga Fase Perawatan Ginjal</h2>
+      <span class="rule"></span>
+    </div>
+    <div class="pillars">
+      <article class="card">
+        <span class="tag">Fase 1 · Muda</span>
+        <h3>Isi Jing</h3>
+        <p>Tubuh masih kuat, Jing masih penuh. Tugasnya mengisi cadangan: tidur cukup, makan bergizi, jangan begadang berlebihan, kelola stres. Ini masa menabung, bukan masa menguras.</p>
+      </article>
+      <article class="card">
+        <span class="tag">Fase 2 · 35–49 / 40–56</span>
+        <h3>Jaga Jing</h3>
+        <p>Cadangan mulai menurun alami. Hindari begadang, aktivitas berlebihan, dan emosi tidak terkendali. Mulai gerak lembut: Taiji, Qigong, jalan pagi. Jaga pinggang tetap hangat.</p>
+      </article>
+      <article class="card">
+        <span class="tag">Fase 3 · Lanjut</span>
+        <h3>Tonifikasi</h3>
+        <p>Waktunya menopang, bukan mengejar. Herbal tonik (wijen hitam, goji, walnut), gerak ringan rutin, tidur sebelum 23.00, dan menjaga kehangatan tubuh — terutama di musim dingin.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- MAKANAN -->
+  <section>
+    <div class="sec-head">
+      <span class="num">五</span>
+      <h2>Makan Apa — Cocok untuk Apa</h2>
+      <span class="rule"></span>
+    </div>
+    <p style="font-size:.86rem;color:var(--ink-soft);margin:0 0 1.2rem;max-width:42rem;">Tidak wajib isi kuis. Kalau Bro mau pilih makanan sendiri, ini patokannya — berdasarkan organ yang ingin ditopang.</p>
+    <div class="foodgrid">
+      <article class="foodcard">
+        <h4>Ginjal — Jing</h4>
+        <span class="organ">Untuk: lelah, nyeri pinggang, telinga berdenging</span>
+        <p>Wijen hitam, walnut, kacang hitam, goji berry, anggur hitam, daging sapi tanpa lemak. Warna hitam dalam TCM diasosiasikan dengan Ginjal.</p>
+      </article>
+      <article class="foodcard">
+        <h4>Limpa — Pencernaan</h4>
+        <span class="organ">Untuk: lemas setelah makan, BAB lembek, nafsu makan turun</span>
+        <p>Labu kuning, ubi, beras merah, kacang merah, jahe hangat. Makan teratur, tidak makan dingin berlebih.</p>
+      </article>
+      <article class="foodcard">
+        <h4>Hati — Darah</h4>
+        <span class="organ">Untuk: mata kering, mudah tegang, kuku rapuh</span>
+        <p>Bayam, kangkung, hati ayam, kacang hijau, wortel, daun kelor. Cukup tidur karena Hati menyimpan darah saat tidur.</p>
+      </article>
+      <article class="foodcard">
+        <h4>Paru — Qi</h4>
+        <span class="organ">Untuk: mudah lelah, sering batuk, kulit kering</span>
+        <p>Pir, apel, lobak putih, jamur putih, madu. Jaga udara tetap bersih, hindari Hewan gorengan berlebih.</p>
+      </article>
+      <article class="foodcard">
+        <h4>Jantung — Shen</h4>
+        <span class="organ">Untuk: sulit tidur, belajar deg-degan, gelisah</span>
+        <p>Longan, jujube merah (dates), teratai, biji lotus. Hindari kafein setelah makan siang.</p>
+      </article>
+      <article class="foodcard">
+        <h4>Yang &amp; Yin</h4>
+        <span class="organ">Untuk: badan dingin / badan kering &amp; mulut kering</span>
+        <p>Yang: jahe, kayu manis, daging, jangan makan sayur mentah. Yin: pir, lobster? air cukup, jamur, biji-bijian.</p>
+      </article>
+    </div>
+    <p class="softnote" style="margin-top:1.4rem;">Catatan: bagian makanan disusun dari prinsip dasar TCM, <strong>bukan</strong> dari PDF "TCM Self Healing Food" (masih menunggu ekstraksi). Sebelum dipakai sebagai materi publik, sebaiknya diperiksa tenaga ahli.</p>
+  </section>
+
+  <!-- KUIS -->
+  <section>
+    <div class="sec-head">
+      <span class="num">六</span>
+      <h2>Kuis Pola (Opsional)</h2>
+      <span class="rule"></span>
+    </div>
+    <div class="quizbox">
+      <span class="quizbadge"><i></i> Tidak wajib</span>
+      <h3>Cari tahu pola tubuhmu</h3>
+      <p class="quiz-intro">Semua materi di atas bisa dibaca tanpa mengisi kuis ini. Kalau mau, jawab 4 pertanyaan singkat untuk melihat pola yang paling mendekati — hasilnya panduan gaya hidup, bukan diagnosis.</p>
+
+      <div class="progressline"><i id="qprogress"></i></div>
+
+      <form id="quizform">
+        <div id="qs"></div>
+        <div class="quiz-actions">
+          <button type="submit" class="btn btn-primary" id="btnsubmit">Lihat hasil</button>
+          <button type="button" class="btn btn-ghost" id="btnreset">Ulangi</button>
+        </div>
+      </form>
+
+      <div id="result" class="result" hidden aria-live="polite"></div>
+
+      <p class="softnote">Kuis ini bersifat edukatif dan tidak menggantikan konsultasi dengan dokter atau praktisi TCM berlisensi. Bila ada keluhan berat atau menahun, periksa ke tenaga kesehatan.</p>
+    </div>
+  </section>
+
+  <footer>
+    <strong>Sehat dengan TCM</strong> — materi edukasi disusun dari dokumen "Update TCM".<br>
+    Konten bersifat informasi, bukan pengganti diagnosis medis. Konsultasikan keluhan ke tenaga kesehatan atau praktisi akupunktur berlisensi.
+  </footer>
+</div>
+
+<script>
+/* ============ DATA: siklus usia ============ */
+const SIKLUS = {
+  wanita: [
+    {age:"7", title:"Gigi susu mulai berganti", tag:"Anak",
+     body:"<p>Harimau? <strong>Ginjal</strong> mulai kuat. Gigi susu tanggal, rambut tumbuh lebih lebat. Ini tanda Jing bawaan bekerja baik.</p><ul><li>Nutrisi cukup protein &amp; kalsium</li><li>Tidur cukup — pertumbuhan terjadi saat tidur</li><li>Jangan dipaksa aktivitas fisik berat</li></ul>"},
+    {age:"14", title:"Tiangui aktif · kesuburan mulai", tag:"Menarche",
+     body:"<p><strong>Ren Mai</strong> (pembuluh konsepsi) terbuka, Tiangui mencapai puncak pertama. Menstruasi mulai.</p><ul><li>Siklus awal sering belum teratur — wajar 1–2 tahun pertama</li><li>Hindari makanan &amp; minuman dingin saat haid</li><li>Jaga kaki &amp; perut tetap hangat</li><li>Tidur cukup, kelola stres sekolah</li></ul>"},
+    {age:"21", title:"Tubuh matang, gigi tetap lengkap", tag:"Dewasa muda",
+     body:"<p>Ginjal di puncak kekuatannya. Gigi permanen lengkap, energi tinggi.</p><ul><li>Waktu terbaik membangun kebiasaan tidur &amp; makan</li><li>Mulai rutin olahraga ringan agar tidak menguras Jing</li><li>Hindari begadang kronis — efeknya baru terasa 10 tahun kemudian</li></ul>"},
+    {age:"28", title:"Puncak kekuatan tubuh", tag:"Puncak",
+     body:"<p>Tulang, otot, dan rambut paling kuat. Ini puncak fisik seorang wanita dalam TCM.</p><ul><li>Tubuh mampu, tapi jangan dijadikan alasan menguras tenaga</li><li>Jaga pola makan teratur, jangan skip sarapan</li><li>Mulai perhatikan siklus haid sebagai indikator kesehatan</li></ul>"},
+    {age:"35", title:"Penurunan awal · mulai jaga Jing", tag:"Mulai menurun",
+     body:"<p><strong>Yang Ming</strong> (pembuluh lambung) mulai melemah. Wajah mulai berubah, rambut mulai rontok, gigi terasa lebih sensitif.</p><ul><li>Fokus pada Limpa–Lambung: makan teratur, hangat, tidak berlebihan</li><li>Kurangi makanan mentah &amp; dingin</li><li>Mulai gerak lembut: jalan kaki, yoga, Taiji</li><li>Ini fase paling penting untuk mulai <strong>menjaga</strong>, bukan menambah beban</li></ul>"},
+    {age:"42", title:"Perubahan wajah &amp; rambut", tag:"Fase jaga",
+     body:"<p><strong>Yang Ming</strong> makin melemah, <strong>Tai Yang</strong> (pembuluh matahari) mulai menurun. Wajah mulai kusam, rambut mulai beruban.</p><ul><li>Jaga darah tetap cukup: protein, sayur hijau, hati ayam</li><li>Tidur sebelum 23.00 — sangat berpengaruh pada wajah &amp; rambut</li><li>Kelola emosi; stres menguras lebih cepat di fase ini</li><li>Tonifikasi lembut: goji, wijen hitam, kurma merah</li></ul>"},
+    {age:"49", title:"Menopause · Ren Mai kosong", tag:"Perubahan besar",
+     body:"<p><strong>Ren Mai</strong> kosong, Tiangui habis, haid berhenti. Tubuh masuk pola baru — bukan sakit, tapi butuh penyesuaian.</p><ul><li>Keluhan umum: hot flash, sulit tidur, mudah lelah, emosi naik-turun</li><li>Fokus pada <strong>Yin Ginjal</strong>: cukup air, tidur cukup, hindari pedas &amp; kopi berlebih</li><li>Gerak ringan rutin menjaga tulang (risiko osteoporosis naik)</li><li>Asupan kalsium &amp; protein cukup, jemur pagi 10–15 menit</li><li>Bila keluhan mengganggu aktivitas, konsultasi ke tenaga kesehatan</li></ul>"}
+  ],
+  pria: [
+    {age:"8", title:"Gigi susu berganti", tag:"Anak",
+     body:"<p>Ginjal mulai menguat. Rambut tumbuh, gigi susu berganti.</p><ul><li>Nutrisi cukup untuk pertumbuhan</li><li>Tidur cukup, hindari gawai berlebihan sebelum tidur</li><li>Aktivitas fisik wajar, jangan dipaksa berat</li></ul>"},
+    {age:"16", title:"Tiangui aktif · kesuburan mulai", tag:"Puberty",
+     body:"<p>Tiangui mencapai puncak, <strong>Jing</strong> penuh dan mulai bisa dikeluarkan. Suara berubah, tumbuh jakun.</p><ul><li>Butuh tidur lebih banyak dari fase sebelumnya</li><li>Edukasi soal menjaga energi &amp; tidak begadang</li><li>Hindari beban mental berlebihan (tekanan sekolah/kerja dini)</li></ul>"},
+    {age:"24", title:"Puncak kekuatan tulang &amp; otot", tag:"Dewasa muda",
+     body:"<p>Gigi permanen lengkap, otot dan tulang mencapai kekuatan penuh.</p><ul><li>Waktu terbaik membangun basis kebugaran</li><li>Beban kerja tinggi masih bisa, tapi butuh istirahat sepadan</li><li>Mulai atur pola makan, jangan hanya bergantung suplemen</li></ul>"},
+    {age:"32", title:"Puncak kesuburan &amp; otot", tag:"Puncak",
+     body:"<p>Puncak fisik pria dalam TCM — otot terkuat, kesuburan tertinggi.</p><ul><li>Jaga kualitas tidur; pemulihan otot terjadi saat tidur</li><li>Hindari alkohol &amp; rokok berlebihan</li><li>Perhatikan stres kerja — berdampak langsung ke Jing</li></ul>"},
+    {age:"40", title:"Penurunan awal Jing Ginjal", tag:"Mulai menurun",
+     body:"<p>Rambut mulai rontok, gigi mulai melemah, energi tidak sekuat sebelumnya.</p><ul><li>Kurangi begadang — pemulihan lebih lambat dari usia 20-an</li><li>Ginjal mulai butuh dukungan: wijen hitam, walnut, kacang hitam</li><li>Jaga pinggang tetap hangat, hindari duduk terlalu lama</li><li>Olahraga kardio ringan + latihan pinggang inti</li></ul>"},
+    {age:"48", title:"Mata mulai lelah, rambut beruban", tag:"Fase jaga",
+     body:"<p><strong>Yang Ming</strong> mulai menurun, rambut beruban, mata lebih cepat lelah.</p><ul><li>Istirahatkan mata tiap 40–50 menit menatap layar</li><li>Asupan Hati-Darah: sayur hijau, hati ayam, kacang hijau</li><li>Tidur sebelum 23.00 jadi kunci fase ini</li><li>Mulai kurangi beban kerja berlebihan di malam hari</li></ul>"},
+    {age:"56", title:"Pembuluh mulai melemah · Tiangui menurun", tag:"Perubahan besar",
+     body:"<p><strong>Tiangui</strong> menurun tajam, pembuluh &amp; otot mulai melemah, libido menurun.</p><ul><li>Fokus pada Yang Ginjal: cukup istirahat, jaga kehangatan tubuh</li><li>Gerak ringan rutin — hindari olahraga yang memaksa beban berat</li><li>Periksa tekanan darah &amp; kolesterol secara berkala</li><li>Tonifikasi: wijen hitam, walnut, goji, kurma merah</li></ul>"},
+    {age:"64", title:"Masa menopang · jaga Jing", tag:"Masa perawatan",
+     body:"<p>Gigi dan rambut melemah, Tiangui habis. Fokus berpindah dari mengejar menjadi <strong>menopang</strong>.</p><ul><li>Tidur cukup &amp; teratur menjadi prioritas utama</li><li>Gerak ringan: Taiji, Qigong, jalan pagi 20–30 menit</li><li>Jaga kehangatan tubuh, terutama kaki &amp; pinggang</li><li>Asupan cukup cairan &amp; protein untuk mempertahankan massa otot</li><li>Periksa kesehatan rutin; jangan abaikan keluhan kecil yang menetap</li></ul>"}
+  ]
+};
+
+/* ============ BUILD ACCORDION ============ */
+const opened = {wanita:null, pria:null};
+
+function buildAccordion(group){
+  const host = document.getElementById('acc-' + group);
+  host.innerHTML = '';
+  SIKLUS[group].forEach((item, i) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'acc-item';
+    const id = group + '-p-' + i;
+    wrap.innerHTML = `
+      <button type="button" class="acc-btn" aria-expanded="false" aria-controls="${id}">
+        <span class="acc-age">${item.age} th</span>
+        <span class="acc-title">${item.title}</span>
+        <span class="acc-icon" aria-hidden="true"></span>
+      </button>
+      <div class="acc-panel" id="${id}" role="region">
+        <div class="acc-inner"><span class="tag">${item.tag}</span>${item.body}</div>
+      </div>`;
+    const btn = wrap.querySelector('.acc-btn');
+    const panel = wrap.querySelector('.acc-panel');
+    btn.addEventListener('click', () => toggleItem(group, i, wrap, btn, panel));
+    host.appendChild(wrap);
+  });
+}
+
+function toggleItem(group, i, wrap, btn, panel){
+  const isOpen = wrap.classList.contains('open');
+
+  // close previously opened in this group
+  if (opened[group] !== null && opened[group] !== i){
+    const prev = document.getElementById(group + '-item-' + opened[group]);
+    if (prev) closePanel(prev);
+  }
+
+  if (isOpen){
+    closePanel(wrap);
+    opened[group] = null;
+  } else {
+    wrap.id = group + '-item-' + i;
+    openPanel(wrap, btn, panel);
+    opened[group] = i;
+  }
+}
+
+function openPanel(wrap, btn, panel){
+  wrap.classList.add('open');
+  btn.setAttribute('aria-expanded','true');
+  panel.style.height = panel.scrollHeight + 'px';
+  // after transition settle to auto so content can reflow
+  panel.addEventListener('transitionend', function done(e){
+    if (e.propertyName !== 'height') return;
+    panel.removeEventListener('transitionend', done);
+    if (wrap.classList.contains('open')) panel.style.height = 'auto';
+  });
+}
+
+function closePanel(wrap){
+  const panel = wrap.querySelector('.acc-panel');
+  const btn = wrap.querySelector('.acc-btn');
+  if (!wrap.classList.contains('open')) return;
+  panel.style.height = panel.scrollHeight + 'px';
+  requestAnimationFrame(() => {
+    wrap.classList.remove('open');
+    btn.setAttribute('aria-expanded','false');
+    panel.style.height = '0px';
+  });
+}
+
+buildAccordion('wanita');
+buildAccordion('pria');
+
+/* group switch */
+document.querySelectorAll('.groupswitch button').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.groupswitch button').forEach(x => x.setAttribute('aria-selected','false'));
+    b.setAttribute('aria-selected','true');
+    const g = b.dataset.group;
+    document.getElementById('acc-wanita').hidden = (g !== 'wanita');
+    document.getElementById('acc-pria').hidden = (g !== 'pria');
+  });
+});
+
+/* ============ TEXT SIZE ============ */
+document.querySelectorAll('.textbar button').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.textbar button').forEach(x => x.setAttribute('aria-pressed','false'));
+    b.setAttribute('aria-pressed','true');
+    const s = b.dataset.size;
+    document.documentElement.style.fontSize = s === 'lg' ? '22px' : s === 'xl' ? '24px' : '20px';
+    // recalc any open panel height after resize
+    document.querySelectorAll('.acc-item.open .acc-panel').forEach(p => { p.style.height = 'auto'; });
+  });
+});
+
+/* ============ QUIZ (optional) ============ */
+const QUESTIONS = [
+  {id:'q1', text:'Kalau bangun pagi, bagaimana rasanya tubuhmu?',
+   opts:[
+     {v:'a', t:'Segar, siap beraktivitas'},
+     {v:'b', t:'Masih lemas, butuh waktu lama untuk "nyala"'},
+     {v:'c', t:'Badan terasa berat dan pegal, terutama pinggang'},
+     {v:'d', t:'Pikiran sudah penuh, sulit berhenti berpikir'}
+   ]},
+  {id:'q2', text:'Bagaimana pencernaanmu sehari-hari?',
+   opts:[
+     {v:'a', t:'Lancar dan teratur'},
+     {v:'b', t:'Sering kembung, BAB lembek, atau tidak teratur'},
+     {v:'c', t:'Nafsu makan naik-turun, cepat kenyang lalu cepat lapar'},
+     {v:'d', t:'Normal, tapi sering mual saat cemas'}
+   ]},
+  {id:'q3', text:'Bagaimana tidurmu belakangan ini?',
+   opts:[
+     {v:'a', t:'Cukup dan nyenyak'},
+     {v:'b', t:'Sulit tidur, pikiran terus jalan'},
+     {v:'c', t:'Mudah terbangun, sering terbangun tengah malam'},
+     {v:'d', t:'Tidur banyak tapi tetap lelah saat bangun'}
+   ]},
+  {id:'q4', text:'Bagaimana suhu tubuh & tangan-kakimu?',
+   opts:[
+     {v:'a', t:'Hangat dan nyaman'},
+     {v:'b', t:'Sering dingin, terutama tangan, kaki, dan perut'},
+     {v:'c', t:'Terasa panas di sore/malam, mulut kering'},
+     {v:'d', t:'Campur — kadang dingin, kadang gerah'}
+   ]}
+];
+
+const HASIL = {
+  a:{pattern:'Pola terjaga', title:'Tubuhmu saat ini cukup seimbang',
+     desc:'Jawabanmu menunjukkan Qi, Jing, dan Shen berada dalam kondisi yang cukup baik. Fokus utama adalah mempertahankan, bukan memperbaiki.',
+     tips:['Pertahankan jam tidur yang sama tiap hari','Makan teratur dengan sayur & protein cukup','Gerak ringan 20–30 menit sehari','Jangan menambah beban besar sekaligus pada satu waktu']},
+  b:{pattern:'Pola Qi pencernaan', title:'Limpa–Lambung perlu ditopang',
+     desc:'Pola ini paling dekat dengan melemahnya Qi pencernaan. Tubuh butuh makanan yang mudah dicerna dan hangat.',
+     tips:['Makanan hangat: bubur, sup, ubi, labu kuning','Hindari es, minuman dingin, dan sayur mentah berlebih','Makan dengan porsi kecil tapi teratur','Kunyah perlahan, jangan makan sambil kerja']},
+  c:{pattern:'Pola Yang–Yin Ginjal', title:'Cadangan Jing mulai terkuras',
+     desc:'Kombinasi badan dingin dan pegal di pinggang mengarah pada Ginjal yang perlu ditopang kehangatannya.',
+     tips:['Wijen hitam, walnut, kacang hitam, goji berry','Jaga pinggang & kaki tetap hangat','Tidur sebelum 23.00 tanpa gawai','Hindari begadang dan aktivitas fisik berlebihan']},
+  d:{pattern:'Pola Shen gelisah', title:'Shen butuh ditenteramkan',
+     desc:'Pikiran yang sulit berhenti dan tidur tidak nyenyak biasanya berkaitan dengan Shen dan Hati.',
+     tips:['Longan, kurma merah, biji lotus','Hentikan kafein setelah makan siang','Tarik napas dalam 4-7-8 sebelum tidur','Batasi layar 1 jam sebelum tidur']}
+};
+
+function buildQuiz(){
+  const host = document.getElementById('qs');
+  host.innerHTML = QUESTIONS.map((q, qi) => `
+    <div class="q">
+      <div class="q-label"><span>${qi+1}.</span><span>${q.text}</span></div>
+      <div class="options">
+        ${q.opts.map(o => `
+          <label class="opt">
+            <input type="radio" name="${q.id}" value="${o.v}">
+            <span class="dot" aria-hidden="true"></span>
+            <span>${o.t}</span>
+          </label>`).join('')}
+      </div>
+    </div>`).join('');
+
+  host.querySelectorAll('input').forEach(inp => {
+    inp.addEventListener('change', updateProgress);
+  });
+}
+buildQuiz();
+
+function countAnswered(){
+  return QUESTIONS.filter(q => document.querySelector(`input[name="${q.id}"]:checked`)).length;
+}
+function updateProgress(){
+  const n = countAnswered();
+  document.getElementById('qprogress').style.width = (n / QUESTIONS.length * 100) + '%';
+  const btn = document.getElementById('btnsubmit');
+  btn.disabled = n < QUESTIONS.length;
+  btn.textContent = n < QUESTIONS.length ? `Lihat hasil (${n}/${QUESTIONS.length})` : 'Lihat hasil';
+}
+
+document.getElementById('quizform').addEventListener('submit', e => {
+  e.preventDefault();
+  const answers = QUESTIONS.map(q => {
+    const el = document.querySelector(`input[name="${q.id}"]:checked`);
+    return el ? el.value : null;
+  });
+  if (answers.some(a => !a)) return;
+
+  const tally = {a:0,b:0,c:0,d:0};
+  answers.forEach(a => tally[a]++);
+  const top = Object.keys(tally).sort((x,y) => tally[y]-tally[x])[0];
+  const h = HASIL[top];
+
+  const box = document.getElementById('result');
+  box.innerHTML = `
+    <div class="pattern">${h.pattern}</div>
+    <h4>${h.title}</h4>
+    <p>${h.desc}</p>
+    <ul>${h.tips.map(t => `<li>${t}</li>`).join('')}</ul>
+    <div class="reco">Ini panduan gaya hidup, <strong>bukan diagnosis</strong>. Bila keluhan menetap atau berat, periksa ke tenaga kesehatan.</div>`;
+  box.hidden = false;
+  box.scrollIntoView({behavior:'smooth', block:'center'});
+});
+
+document.getElementById('btnreset').addEventListener('click', () => {
+  document.getElementById('quizform').reset();
+  document.getElementById('result').hidden = true;
+  updateProgress();
+  document.getElementById('quizform').scrollIntoView({behavior:'smooth', block:'center'});
+});
+updateProgress();
+</script>
+</body>
+</html>
